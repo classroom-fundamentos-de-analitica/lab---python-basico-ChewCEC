@@ -11,9 +11,36 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
+#Leer csv
+import csv 
+from operator import itemgetter
+from pickletools import read_uint1
+
+with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    datos = file.readlines()
+  
+
+
+datos = [line.replace("\n", "") for line in datos]
+datos = [line.split("\t") for line in datos]
+
+   
 
 
 def pregunta_01():
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    print(datos[0:2])
+
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+
+    cont = 0
+    for fila in datos:
+        cont += int(fila[1])
+        
+    return cont
     """
     Retorne la suma de la segunda columna.
 
@@ -21,7 +48,6 @@ def pregunta_01():
     214
 
     """
-    return
 
 
 def pregunta_02():
@@ -39,7 +65,26 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+ 
+
+    arreglo =[]
+    for line in datos:
+        arreglo.append(line[0])
+    
+    dict = []
+    for elemento in arreglo:
+        temp = arreglo.count(elemento)
+        if (elemento,temp) not in dict:
+            dict.append((elemento, int(temp)))
+        
+
+    return sorted(dict, key=lambda tup: tup[0])
+            
 
 
 def pregunta_03():
@@ -57,8 +102,27 @@ def pregunta_03():
     ]
 
     """
-    return
-
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+    
+    arreglo1 = []
+    dict = {}
+    for line in datos:
+        if line[0] not in arreglo1:     
+            arreglo1.append(line[0])
+            dict[line[0]] = line[1]
+        elif line[0] in arreglo1:
+            temp = int(dict.get(line[0])) + int(line[1])
+            dict[line[0]] = temp
+            
+    resp = []
+    for key in dict:
+        resp.append( (key, int(dict.get(key))) )
+    return sorted(resp, key=lambda tup: tup[0])
+    
 
 def pregunta_04():
     """
@@ -82,7 +146,25 @@ def pregunta_04():
     ]
 
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+
+    arreglo = []
+    for line in datos:
+        u = line[2].split("-")
+        arreglo.append(u[1])
+    
+    tmp = set(arreglo.copy())
+    
+    resp = []
+    for item in tmp:
+        r = arreglo.count(item)
+        resp.append((item, int(r)))
+    
+    return sorted(resp, key=lambda x: x[0])
 
 
 def pregunta_05():
@@ -100,14 +182,32 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+
+    column1 = set([line[0] for line in datos])
+    dict = {}
+    # (LETRA, NUMERO DE LAS LETRAS )
+    for line in datos:
+        if line[0] not in column1:
+            key = line[0]
+            value = int(line[1])
+            dict[key] = value
+        elif line[0] in column1:
+            t = dict.get(line[0])
+            dict[key] = str(line[1])  #
+    return dict
+
 
 
 def pregunta_06():
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
-    clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
+    clave. Por cada clave, obtenga el valor asociado más pequeño y el valor asociado mas
     grande computados sobre todo el archivo.
 
     Rta/
@@ -123,10 +223,32 @@ def pregunta_06():
         ("iii", 0, 9),
         ("jjj", 5, 17),
     ]
-
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
 
+    lista = []
+    set_a = []
+    for line in datos:
+        u = line[4].split(",")
+        for dat in u:
+            lista.append(dat)
+            set_a.append(dat.split(":")[0])
+    conj = sorted(set(set_a), key=lambda x: x)
+
+    ans = []
+    for elemento in conj:
+        lista_temp = []
+        for dato in lista:
+            d = dato.split(":")
+            if elemento == d[0]:
+                lista_temp.append(int(d[1]))
+        ans.append((elemento, min(lista_temp), max(lista_temp)))
+    
+    return ans
 
 def pregunta_07():
     """
@@ -149,7 +271,22 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+    
+    ans = []
+    for i in range(10):
+        lista_temp = []
+        for linea in datos:
+            if i == int(linea[1]):
+                lista_temp.append(linea[0])
+        ans.append((i,lista_temp))
+    
+    return ans
+
 
 
 def pregunta_08():
@@ -174,7 +311,24 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+    
+    ans = []
+    for i in range(10):
+        lista_temp = []
+        for linea in datos:
+            if i == int(linea[1]):
+                lista_temp.append(linea[0])
+
+        lista = set(lista_temp)
+        ans.append((i, sorted(lista, key = lambda x : x) ))
+    
+    return ans
+    
 
 
 def pregunta_09():
@@ -197,9 +351,28 @@ def pregunta_09():
     }
 
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
 
+    lista = []
+    for line in datos:
+        u = line[4].split(",")
+        for elemento in u:
+            lista.append(elemento.split(":")[0])
 
+    lista_set = sorted(set(lista.copy()), key=lambda x: x)
+    
+    ans = {}
+    for elemento in lista_set:
+        ans[elemento] = lista.count(elemento) 
+
+    return ans
+
+        
+    
 def pregunta_10():
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
@@ -216,10 +389,18 @@ def pregunta_10():
         ("E", 3, 3),
     ]
 
-
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
 
+    ans = []
+    for line in datos:
+        ans.append( ( line[0], len(line[3].split(",")), len(line[4].split(","))  ))
+
+    return ans
 
 def pregunta_11():
     """
@@ -237,9 +418,22 @@ def pregunta_11():
         "g": 35,
     }
 
-
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+    
+    letras = ["a", "b", "c", "d", "e", "f", "g"]
+    ans = {}
+    for elemento in letras:
+        cont = 0 
+        for line in datos:
+            if elemento in line[3]:
+                cont += int(line[1])
+        ans[elemento] = cont
+    return ans
 
 
 def pregunta_12():
@@ -257,4 +451,23 @@ def pregunta_12():
     }
 
     """
-    return
+    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+        datos = file.readlines()
+    
+    datos = [line.replace("\n", "") for line in datos]
+    datos = [line.split("\t") for line in datos]
+
+    letras = sorted (set([ line[0] for line in datos]), key=lambda x: x)
+
+    ans = dict.fromkeys(letras, 0)
+    for line in datos:
+        if line[0] in letras:
+            cont = 0
+            u = line[4].split(",")
+            for urg in u:
+                cont += int(urg[4:])
+        ans[line[0]] = cont + ans.get(line[0])
+    
+    return ans
+
+
