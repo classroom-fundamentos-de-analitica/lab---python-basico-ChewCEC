@@ -63,7 +63,7 @@ def pregunta_02():
     ]
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -100,7 +100,7 @@ def pregunta_03():
     ]
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -144,7 +144,7 @@ def pregunta_04():
     ]
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -180,7 +180,7 @@ def pregunta_05():
     ]
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -222,7 +222,7 @@ def pregunta_06():
         ("jjj", 5, 17),
     ]
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -269,7 +269,7 @@ def pregunta_07():
     ]
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -309,7 +309,7 @@ def pregunta_08():
     ]
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -349,7 +349,7 @@ def pregunta_09():
     }
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -388,7 +388,7 @@ def pregunta_10():
     ]
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -417,7 +417,7 @@ def pregunta_11():
     }
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
@@ -449,7 +449,7 @@ def pregunta_12():
     }
 
     """
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     datos = [line.replace("\n", "") for line in datos]
