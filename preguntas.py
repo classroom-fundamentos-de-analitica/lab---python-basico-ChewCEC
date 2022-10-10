@@ -16,7 +16,7 @@ import csv
 from operator import itemgetter
 from pickletools import read_uint1
 
-with open("Análisis de datos\Lab1\data.csv", "r") as file:
+with open("data.csv", "r") as file:
     datos = file.readlines()
   
 
@@ -24,11 +24,9 @@ with open("Análisis de datos\Lab1\data.csv", "r") as file:
 datos = [line.replace("\n", "") for line in datos]
 datos = [line.split("\t") for line in datos]
 
-   
-
 
 def pregunta_01():
-    with open("Análisis de datos\Lab1\data.csv", "r") as file:
+    with open("data.csv", "r") as file:
         datos = file.readlines()
     
     print(datos[0:2])
