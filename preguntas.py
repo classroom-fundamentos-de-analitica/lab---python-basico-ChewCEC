@@ -196,13 +196,13 @@ def pregunta_05():
         letra = line[0]
         numero = int(line[1])
         if letra not in dictMenor:
-            dictMenor[letra] = [numero]
-            dictMayor[letra] = [numero]
+            dictMenor[letra] = numero
+            dictMayor[letra] = numero
         elif letra in dictMenor:
-            if numero > dictMayor.get(letra):
-                dictMayor[letra] = [numero]
-            elif numero < dictMenor.get(letra):
-                dictMenor[letra] = [numero]
+            if numero > dictMayor[letra]:
+                dictMayor[letra] = numero
+            elif numero < dictMenor[letra]:
+                dictMenor[letra] = numero
 
     resp = []
     for letra in column1:
