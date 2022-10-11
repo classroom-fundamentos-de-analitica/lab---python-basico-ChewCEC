@@ -194,7 +194,7 @@ def pregunta_05():
 
     for line in datos:
         letra = line[0]
-        numero = int(numero)
+        numero = int(line[1])
         if letra not in dictMenor:
             dictMenor[letra] = [numero]
             dictMayor[letra] = [numero]
@@ -207,7 +207,7 @@ def pregunta_05():
     resp = []
     for letra in column1:
         resp.append( (letra, int(dictMayor.get(letra)), int(dictMenor.get(letra))) )
-        
+    
     return resp
 
 
