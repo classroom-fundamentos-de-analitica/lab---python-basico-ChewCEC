@@ -186,18 +186,29 @@ def pregunta_05():
     datos = [line.replace("\n", "") for line in datos]
     datos = [line.split("\t") for line in datos]
 
-    column1 = set([line[0] for line in datos])
-    dict = {}
+    column1 = sorted(set([line[0] for line in datos]))
+    
+    dictMenor = {}
+    dictMayor = {}
     # (LETRA, NUMERO DE LAS LETRAS )
+
     for line in datos:
-        if line[0] not in column1:
-            key = line[0]
-            value = int(line[1])
-            dict[key] = value
-        elif line[0] in column1:
-            t = dict.get(line[0])
-            dict[key] = str(line[1])  #
-    return dict
+        letra = line[0]
+        numero = int(numero)
+        if letra not in dictMenor:
+            dictMenor[letra] = [numero]
+            dictMayor[letra] = [numero]
+        elif letra in dictMenor:
+            if numero > dictMayor.get(letra):
+                dictMayor[letra] = [numero]
+            elif numero < dictMenor.get(letra):
+                dictMenor[letra] = [numero]
+
+    resp = []
+    for letra in column1:
+        resp.append( (letra, int(dictMayor.get(letra)), int(dictMenor.get(letra))) )
+        
+    return resp
 
 
 
